@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ES2015",
+    "rootDir": "src",
+    "outDir": "dist",
+    "noImplicitAny": true
+  },
+  "include": [
+    "src",
+    "**/*.ts"
+  ],
+  "exclude": [
+  ],
+}
