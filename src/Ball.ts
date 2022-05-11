@@ -15,8 +15,8 @@ export class Ball {
     this.diameter = this.radius * 2;
     this.vx = Math.random() * 2 + 2;
     this.vy = Math.random() * 2 + 2;
-    this.x  = this.radius + (Math.random() * (+stageWidth - +this.diameter));
-    this.y = this.radius + (Math.random() * (+stageHeight - +this.diameter));
+    this.x  = this.diameter + (Math.random() * (stageWidth - this.diameter * 2));
+    this.y = this.diameter + (Math.random() * (stageHeight - this.diameter * 2));
   }
 
   draw(ctx: CanvasRenderingContext2D, stageWidth: number, stageHeight: number) {
