@@ -13,8 +13,8 @@ export class Ball {
   constructor(stageWidth: number, stageHeight: number) {
     this.radius = Math.random() * 10 + 10;
     this.diameter = this.radius * 2;
-    this.vx = Math.random() * 2 + 2;
-    this.vy = Math.random() * 2 + 2;
+    this.vx = Math.round(Math.random()) ? Math.random() * 2 + 2 : Math.random() * -2 - 2;
+    this.vy = Math.round(Math.random()) ? Math.random() * 2 + 2 : Math.random() * -2 - 2;
     this.x  = this.diameter + (Math.random() * (stageWidth - this.diameter * 2));
     this.y = this.diameter + (Math.random() * (stageHeight - this.diameter * 2));
   }
