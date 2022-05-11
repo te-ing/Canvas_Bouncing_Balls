@@ -1,5 +1,15 @@
 import { Ball } from "./Ball.js";
 
+interface IBall {
+  diameter: number;
+  radius: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  draw: Function;
+}
+
 export default function Canvas($target: Element) {
   const $Canvas = document.createElement("canvas");
   $target.appendChild($Canvas);
@@ -8,18 +18,17 @@ export default function Canvas($target: Element) {
   $Canvas.style.cssText = `border: 1px solid black;`; 
   const ctx = $Canvas.getContext("2d");
 
-  const ball1 = new Ball($Canvas.width, $Canvas.height);
-  const ball2 = new Ball($Canvas.width, $Canvas.height);
-  const ball3 = new Ball($Canvas.width, $Canvas.height);
+  const balls: IBall[] = [];
+  for (let i = 0; i < Math.floor(Math.random() * 10) + 10; i++){
+    balls.push(new Ball($Canvas.width, $Canvas.height));
+  }
 
   function animate(t?: unknown) {
-    window.requestAnimationFrame(animate.bind(this));
-
     ctx.clearRect(0, 0, $Canvas.width, $Canvas.height);
-
-    ball1.draw(ctx, $Canvas.width, $Canvas.height);
-    ball2.draw(ctx, $Canvas.width, $Canvas.height);
-    ball3.draw(ctx, $Canvas.width, $Canvas.height);
+    for (let i = 0; i < balls.length; i++){
+      balls[i].draw(ctx, $Canvas.width, $Canvas.height);
+    }
+    window.requestAnimationFrame(animate.bind(this));
   }
   animate()
 }

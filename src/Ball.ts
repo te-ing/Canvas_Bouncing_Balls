@@ -18,7 +18,7 @@ export class Ball {
     this.x  = this.radius + (Math.random() * (+stageWidth - +this.diameter));
     this.y = this.radius + (Math.random() * (+stageHeight - +this.diameter));
   }
-  
+
   draw(ctx: CanvasRenderingContext2D, stageWidth: number, stageHeight: number) {
     this.x = +this.x + +this.vx;
     this.y = +this.y + +this.vy;
@@ -28,6 +28,7 @@ export class Ball {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.diameter, 0, 2 * Math.PI);
     ctx.fill();
+
   }
 
   bounceStage(stageWidth: number, stageHeight: number) {
