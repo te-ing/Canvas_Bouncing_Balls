@@ -12,5 +12,5 @@ export default function Canvas({ $target }: ICanvas) {
   $Canvas.style.cssText = `border: 1px solid black;`; 
   const ctx = $Canvas.getContext("2d");
 
-  BouncingBalls({ ctx, $Canvas });
+  BouncingBalls( ctx, $Canvas.width, $Canvas.height );
 }
