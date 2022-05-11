@@ -19,16 +19,22 @@ export class Ball {
     this.y = this.diameter + (Math.random() * (stageHeight - this.diameter * 2));
   }
 
-  draw(ctx: CanvasRenderingContext2D, stageWidth: number, stageHeight: number) {
-    this.x = +this.x + +this.vx;
-    this.y = +this.y + +this.vy;
+  draw(ctx: CanvasRenderingContext2D, stageWidth: number, stageHeight: number, collision?: boolean) {
+    this.x = this.x + this.vx;
+    this.y = this.y + this.vy;
 
-    this.bounceStage(stageWidth, stageHeight);
-
+    if (collision) {
+      this.vx *= -1;
+      this.vy *= -1;
+      this.x += this.vx;
+      this.y += this.vy;
+    } else {
+      this.bounceStage(stageWidth, stageHeight);
+    }
+    
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.diameter, 0, 2 * Math.PI);
     ctx.fill();
-
   }
 
   bounceStage(stageWidth: number, stageHeight: number) {

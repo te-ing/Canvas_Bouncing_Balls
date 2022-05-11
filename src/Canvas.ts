@@ -26,6 +26,12 @@ export default function Canvas($target: Element) {
   function animate(t?: unknown) {
     ctx.clearRect(0, 0, $Canvas.width, $Canvas.height);
     for (let i = 0; i < balls.length; i++){
+      for (let j = 0; j < balls.length; j++) {
+        if (i !== j && Math.abs(balls[i].x - balls[j].x) + Math.abs(balls[i].y - balls[j].y ) <= (balls[i].diameter + balls[j].diameter)) {
+          balls[i].draw(ctx, $Canvas.width, $Canvas.height, true);
+          break;
+        }
+      }
       balls[i].draw(ctx, $Canvas.width, $Canvas.height);
     }
     window.requestAnimationFrame(animate.bind(this));
