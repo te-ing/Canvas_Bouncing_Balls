@@ -1,8 +1,10 @@
 export class Ball {
   radius: number;
+  diameter: number;
+  speed: number;
+  direction: number;
   x: number;
   y: number;
-  diameter: number;
   vx: number;
   vy: number;
   minX: number;
@@ -13,8 +15,10 @@ export class Ball {
   constructor(stageWidth: number, stageHeight: number) {
     this.radius = Math.random() * 10 + 10;
     this.diameter = this.radius * 2;
-    this.vx = Math.round(Math.random()) ? (Math.random() * 200 + 200)/60 : (Math.random() * -200 - 200)/60;
-    this.vy = Math.round(Math.random()) ? (Math.random() * 200 + 200)/60 : (Math.random() * -200 - 200)/60;
+    this.speed = (Math.random() * 200 + 200) / 60;
+    this.direction = Math.random();
+    this.vx = Math.round(Math.random()) ? this.direction * this.speed : this.direction * this.speed * -1;
+    this.vy = Math.round(Math.random()) ? (1 - this.direction) * this.speed : (1 - this.direction) * this.speed * -1;
     this.x  = this.diameter + (Math.random() * (stageWidth - this.diameter * 2));
     this.y = this.diameter + (Math.random() * (stageHeight - this.diameter * 2));
   }
