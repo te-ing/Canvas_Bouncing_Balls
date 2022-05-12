@@ -19,8 +19,14 @@ export default function Canvas($target: Element) {
   const ctx = $Canvas.getContext("2d");
 
   const balls: IBall[] = [];
-  for (let i = 0; i < Math.floor(Math.random() * 10) + 10; i++){
-    balls.push(new Ball($Canvas.width, $Canvas.height));
+  for (let i = 0; i < Math.round(Math.random() * 10) + 10; i++){
+    let newBall = new Ball($Canvas.width, $Canvas.height);
+    for (let ball of balls) {
+      while (Math.abs(ball.x - newBall.x) + Math.abs(ball.y - newBall.y) <= ball.diameter + newBall.diameter) {
+        newBall = new Ball($Canvas.width, $Canvas.height);
+      }
+    }
+    balls.push(newBall);
   }
 
   function animate(t?: unknown) {
