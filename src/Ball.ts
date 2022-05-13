@@ -16,9 +16,9 @@ export class Ball {
     this.radius = Math.random() * 10 + 10;
     this.diameter = this.radius * 2;
     this.speed = (Math.random() * 200 + 200) / 60;
-    this.direction = Math.random();
-    this.vx = Math.round(Math.random()) ? this.direction * this.speed : this.direction * this.speed * -1;
-    this.vy = Math.round(Math.random()) ? (1 - this.direction) * this.speed : (1 - this.direction) * this.speed * -1;
+    this.direction = Math.round(Math.random()) ? Math.random() : Math.random() * -1;
+    this.vx = this.direction * this.speed;
+    this.vy = (1 - this.direction) * this.speed;
     this.x  = this.diameter + (Math.random() * (stageWidth - this.diameter * 2));
     this.y = this.diameter + (Math.random() * (stageHeight - this.diameter * 2));
   }
