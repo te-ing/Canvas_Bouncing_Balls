@@ -1,14 +1,5 @@
 import { Ball } from "./Ball.js";
-
-interface IBall {
-  diameter: number;
-  radius: number;
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  draw: Function;
-}
+import { IBall } from "./types.js";
 
 export default function Canvas($target: Element) {
   const $Canvas = document.createElement("canvas");
